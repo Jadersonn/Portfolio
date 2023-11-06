@@ -1,0 +1,2 @@
+Nesta pasta estão o modelo para que possa ser utilizado para mudanças ou para gerar um novo script
+mas para quem não quiser criar um novo script, está disponibilizado o script para criação do banco de dados diretamente também.
