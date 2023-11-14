@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.41304347826086957" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.portfolio.TelaLoginFXMLController">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Button layoutX="9.0" layoutY="290.0" mnemonicParsing="false" onAction="#clickEsqueciSenha" prefHeight="39.0" prefWidth="137.0" text="Esqueci a Senha">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="149.0" layoutY="290.0" mnemonicParsing="false" onAction="#clickCriarConta" prefHeight="39.0" prefWidth="101.0" text="Criar Conta">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Text layoutX="96.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="11.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="emailLogin" layoutX="9.0" layoutY="130.0" prefHeight="31.0" prefWidth="241.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <PasswordField fx:id="senhaLogin" layoutX="9.0" layoutY="196.0" prefHeight="31.0" prefWidth="241.0">
+               <font>
+                  <Font size="18.0" />
+               </font></PasswordField>
+            <Button layoutX="9.0" layoutY="245.0" mnemonicParsing="false" onAction="#clickContinuar" prefHeight="31.0" prefWidth="241.0" text="CONTINUAR">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <rotationAxis>
+            <Point3D y="50.0" z="1.0" />
+         </rotationAxis>
+      </AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="341.0">
+         <children>
+            <ImageView id="imgLogo" fx:id="imgLogo" fitHeight="231.0" fitWidth="278.0" layoutX="46.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>

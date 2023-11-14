@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.41304347826086957" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.portfolio.TelaCadastroFXMLController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <Button layoutX="11.0" layoutY="375.0" mnemonicParsing="false" onAction="#clickVoltar" prefHeight="31.0" prefWidth="109.0" text="Voltar" />
+                <Button layoutX="139.0" layoutY="375.0" mnemonicParsing="false" onAction="#clickCriarConta" prefHeight="31.0" prefWidth="109.0" text="Criar Conta" />
+                <Text layoutX="76.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Text layoutX="9.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text layoutX="10.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text layoutX="11.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text layoutX="11.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirme a senha:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="nomeCadastro" layoutX="9.0" layoutY="101.0" prefHeight="31.0" prefWidth="241.0" />
+                <TextField fx:id="emailCadastro" layoutX="9.0" layoutY="166.0" prefHeight="31.0" prefWidth="241.0" />
+                <PasswordField fx:id="senhaCadastro" layoutX="9.0" layoutY="232.0" prefHeight="31.0" prefWidth="241.0" />
+                <PasswordField fx:id="confirmeSenhaCadastro" layoutX="9.0" layoutY="298.0" prefHeight="31.0" prefWidth="241.0" />
+            </children>
+            <rotationAxis>
+                <Point3D y="50.0" z="1.0" />
+            </rotationAxis>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="341.0">
+            <children>
+                <ImageView fx:id="imgLogo" fitHeight="231.0" fitWidth="278.0" layoutX="46.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>

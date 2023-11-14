@@ -1,0 +1,5 @@
+com\mycompany\portfolio\TelaLoginFXMLController.class
+module-info.class
+com\mycompany\portfolio\Portfolio.class
+com\mycompany\portfolio\TelaCadastroFXMLController.class
+com\mycompany\portfolio\TelaPesquisaFXMLController.class
