@@ -13,14 +13,15 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 /**
  * FXML Controller class
  *
  * @author INFO
  */
 public class TelaCadastroFXMLController implements Initializable {
-
 
     @FXML
     private TextField nomeCadastro;
@@ -32,14 +33,21 @@ public class TelaCadastroFXMLController implements Initializable {
     private PasswordField confirmeSenhaCadastro;
     @FXML
     private ImageView imgLogo;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        try {
+            Image logo = new Image("imgs/logo.png");
+            imgLogo.setImage(logo);
+        } catch (Exception e) {
+            System.err.println("Erro ao carregar a imagem: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void clickVoltar(ActionEvent event) throws IOException {
         Portfolio.setRoot("telaLoginFXML");

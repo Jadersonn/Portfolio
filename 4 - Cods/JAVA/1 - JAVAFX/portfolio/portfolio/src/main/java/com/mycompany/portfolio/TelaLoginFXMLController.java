@@ -12,8 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+
 /**
  * FXML Controller class
  *
@@ -21,21 +25,35 @@ import javafx.scene.image.ImageView;
  */
 public class TelaLoginFXMLController implements Initializable {
 
-
     @FXML
     private TextField emailLogin;
     @FXML
     private PasswordField senhaLogin;
     @FXML
     private ImageView imgLogo;
+    @FXML
+    private AnchorPane anchorPane;
+    @FXML
+    private SplitPane splitPane;
+
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        try {
+            Image logo = new Image("imgs/logo.png");
+            imgLogo.setImage(logo);
+        } catch (Exception e) {
+            System.err.println("Erro ao carregar a imagem: " + e.getMessage());
+        }
+        
+       
+    }
+
     @FXML
     private void clickEsqueciSenha(ActionEvent event) {
     }
