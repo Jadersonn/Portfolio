@@ -3,11 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
+
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 
 public class ConexaoDAO {
 
@@ -15,19 +14,19 @@ public class ConexaoDAO {
     static String USERNAME = "root";
     static String PASSWORD = "";
 
-    public Connection conectaBD(){
-        Connection connection =  null;
+    public Connection conectaBD() {
+        Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             if (connection != null) {
                 System.out.println("\n----------------------------------------------------");
                 System.out.println("\tConectado ao Banco de Dados.");
                 System.out.println("----------------------------------------------------");
-            }else{
+            } else {
                 System.out.println("\n----------------------------------------------------");
-                System.out.println("\tN?O conectado ao Banco de Dados.");
+                System.out.println("\tNaO conectado ao Banco de Dados.");
                 System.out.println("----------------------------------------------------");
-                
+
             }
         } catch (SQLException e) {
             System.out.println(e);
