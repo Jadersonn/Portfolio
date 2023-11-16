@@ -85,5 +85,12 @@ public class Usuario {
     public void setAdministrador(boolean administrador) {
         this.administrador = administrador;
     }
-
+    
+    /**
+     *
+     */
+    @Override
+    public String toString(){
+        return ("\nNome:" + this.nome + "\nEmail:" + this.email + "\nHash:" + this.senha + "\nAdministrador: " + this.administrador);
+    }
 }
