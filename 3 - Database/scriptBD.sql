@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `pecasCarros`.`usuario` (
   `userId` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `senha` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(64) NOT NULL,
   `administrador` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`userId`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
