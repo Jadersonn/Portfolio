@@ -17,6 +17,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import objetos.Usuario;
 
 /**
@@ -36,19 +41,19 @@ public class TelaCadastroFXMLController implements Initializable {
     private PasswordField confirmeSenhaCadastro;
     @FXML
     private ImageView imgLogo;
-    
-    
+
     /**
      * Initializes the controller class.
+     *
+     * @param url
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {        
+    public void initialize(URL url, ResourceBundle rb) {
         try {
             Image logo = new Image("resources/imgs/logo.png");
             imgLogo.setImage(logo);
         } catch (Exception e) {
             System.err.println("Erro ao carregar a imagem: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -58,7 +63,7 @@ public class TelaCadastroFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickCriarConta(ActionEvent event) {
+    private void clickCriarConta(ActionEvent event) throws NoSuchAlgorithmException {
         /*ConexaoDAO conexao = new ConexaoDAO();
         if(conexao.conectaBD() != null){
         System.out.println("conectou");
@@ -72,12 +77,20 @@ public class TelaCadastroFXMLController implements Initializable {
         Usuario usuario = new Usuario();
         usuario.setNome(nomeCadastro.getText());
         usuario.setEmail(emailCadastro.getText());
-        if(senhaCadastro.getText().equals(confirmeSenhaCadastro.getText())){
-            
+        if (senhaCadastro.getText().equals(confirmeSenhaCadastro.getText())) {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(senhaCadastro.getText().getBytes(StandardCharsets.UTF_8));
+
+            // Convertendo o array de bytes para representação hexadecimal
+            StringBuilder hexStringBuilder = new StringBuilder();
+            for (byte b : hashBytes) {
+                hexStringBuilder.append(String.format("%02x", b));
+            }
+            usuario.setSenha(hexStringBuilder.toString());
         }
-        
-        
-           
+
+        System.out.println("Usuario Salvo" + usuario.toString());
+        usuarioBD.salvarUsuario(usuario);
     }
 
 }
