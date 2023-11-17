@@ -4,12 +4,17 @@
  */
 package dao;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import objetos.Usuario;
 
 public class UsuarioDAO {
@@ -30,9 +35,24 @@ public class UsuarioDAO {
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            String alert = convertSQLExceptionToString(e);
+            alertBd(alert);
         }
         return null;
+    }
+    public boolean realizarLogin(String email, String senha) throws NoSuchAlgorithmException {
+        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            statement.setString(2, converterSenha(senha));
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next(); 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Lida com a exceção de SQL
+            return false;
+        }
     }
 
     public List<Usuario> obterTodosUsuarios() {
@@ -44,35 +64,38 @@ public class UsuarioDAO {
                 usuarios.add(criarUsuario(resultSet));
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            String alert = convertSQLExceptionToString(e);
+            alertBd(alert);
         }
         return usuarios;
     }
 
-    public void salvarUsuario(Usuario usuario) {
+    public void salvarUsuario(Usuario usuario) throws NoSuchAlgorithmException {
         String query = "INSERT INTO usuario (nome, email, senha, administrador) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, usuario.getNome());
             preparedStatement.setString(2, usuario.getEmail());
-            preparedStatement.setString(3, usuario.getSenha());
+            preparedStatement.setString(3, converterSenha(usuario.getSenha()));
             preparedStatement.setBoolean(4, usuario.isAdministrador());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);
+            String alert = convertSQLExceptionToString(e);
+            alertBd(alert);
         }
     }
 
-    public void atualizarUsuario(Usuario usuario) {
+    public void atualizarUsuario(Usuario usuario) throws NoSuchAlgorithmException {
         String query = "UPDATE usuario SET nome = ?, email = ?, senha = ?, administrador = ? WHERE userId = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, usuario.getNome());
             preparedStatement.setString(2, usuario.getEmail());
-            preparedStatement.setString(3, usuario.getSenha());
+            preparedStatement.setString(3, converterSenha(usuario.getSenha()));
             preparedStatement.setBoolean(4, usuario.isAdministrador());
             preparedStatement.setInt(5, usuario.getUserId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);
+            String alert = convertSQLExceptionToString(e);
+            alertBd(alert);
         }
     }
 
@@ -82,7 +105,8 @@ public class UsuarioDAO {
             preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);
+            String alert = convertSQLExceptionToString(e);
+            alertBd(alert);
         }
     }
 
@@ -94,5 +118,42 @@ public class UsuarioDAO {
         usuario.setSenha(resultSet.getString("senha"));
         usuario.setAdministrador(resultSet.getBoolean("administrador"));
         return usuario;
+    }
+
+    private void alertBd(String avisoConexao) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Houve um problema no Banco de dados");
+        alert.setContentText(avisoConexao);
+        alert.showAndWait();
+    }
+
+    private static String convertSQLExceptionToString(SQLException e) {
+        StringBuilder mensagem = new StringBuilder();
+
+        do {
+            mensagem.append("SQLState: ").append(e.getSQLState()).append("\n");
+            mensagem.append("Código do erro: ").append(e.getErrorCode()).append("\n");
+            mensagem.append("Mensagem: ").append(e.getMessage()).append("\n");
+
+            e = e.getNextException();
+            if (e != null) {
+                mensagem.append("\n--- Causa raiz ---\n");
+            }
+        } while (e != null);
+
+        return mensagem.toString();
+    }
+    
+    private String converterSenha(String senha) throws NoSuchAlgorithmException, NoSuchAlgorithmException{
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                byte[] hashBytes = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
+
+                // Convertendo o array de bytes para representação hexadecimal
+                StringBuilder hexStringBuilder = new StringBuilder();
+                for (byte b : hashBytes) {
+                    hexStringBuilder.append(String.format("%02x", b));
+                }
+                return hexStringBuilder.toString();
     }
 }

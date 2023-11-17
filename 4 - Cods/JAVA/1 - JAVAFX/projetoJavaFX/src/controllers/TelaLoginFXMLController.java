@@ -4,8 +4,11 @@
  */
 package controllers;
 
+import dao.ConexaoDAO;
+import dao.UsuarioDAO;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import objetos.Usuario;
 
 /**
  * FXML Controller class
@@ -60,12 +64,22 @@ public class TelaLoginFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickCriarConta(ActionEvent event) throws IOException {
+    private void clickCriarConta() throws IOException {
         Portfolio.setRoot("telaCadastroFXML");
     }
 
     @FXML
-    private void clickContinuar(ActionEvent event) {
+    private void clickContinuar() throws NoSuchAlgorithmException {
+        ConexaoDAO conexao = new ConexaoDAO();
+        UsuarioDAO usuarioLogin = new UsuarioDAO(conexao.conectaBD());
+        Usuario userLogin = new Usuario();
+        if(usuarioLogin.realizarLogin(emailLogin.getText(), senhaLogin.getText())){
+            System.out.println("Logado");
+        }else{
+            System.out.println("Houve um erro");
+        }
+        
+        
     }
 
 }

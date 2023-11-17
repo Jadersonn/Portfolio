@@ -7,6 +7,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javafx.scene.control.Alert;
 
 public class ConexaoDAO {
 
@@ -33,5 +34,7 @@ public class ConexaoDAO {
         }
         return connection;
     }
+    
+   
 
 }
