@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -42,7 +43,12 @@ public class TelaEsqueciSenhaFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            Image logo = new Image("resources/imgs/logo.png");
+            imgLogo.setImage(logo);
+        } catch (Exception e) {
+            System.err.println("Erro ao carregar a imagem: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -51,8 +57,9 @@ public class TelaEsqueciSenhaFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickContinuar() {
+    private void clickContinuar() throws IOException {
         enviarEmail(emailEsqueceuSenha.getText());
+        Portfolio.setRoot("telaLoginFXML");
     }
 
     @FXML
