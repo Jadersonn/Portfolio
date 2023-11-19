@@ -59,7 +59,7 @@ public class TelaEsqueciSenhaFXMLController implements Initializable {
     @FXML
     private void clickContinuar() throws IOException {
         enviarEmail(emailEsqueceuSenha.getText());
-        Portfolio.setRoot("telaLoginFXML");
+
     }
 
     @FXML
@@ -69,14 +69,17 @@ public class TelaEsqueciSenhaFXMLController implements Initializable {
         }
     }
 
-    private void enviarEmail(String email) {
-        ConexaoDAO conexao = new ConexaoDAO();
-        UsuarioDAO user = new UsuarioDAO(conexao.conectaBD());
-        
-        if (user.obterUsuarioPorEmail(email).getEmail().isEmpty()) {
-            avisoPoupUP("Houve um problema","Nao foi encontrado contas cadastradas para: " + email);
-        } else {
-            avisoPoupUP("Verifique sua caixa no email","Um email com informações para recuperar sua senha foi encaminhado para: " + email);
+    private void enviarEmail(String email) throws IOException {
+        if (!email.isEmpty()) {
+            ConexaoDAO conexao = new ConexaoDAO();
+            UsuarioDAO user = new UsuarioDAO(conexao.conectaBD());
+
+            if (null == user.obterUsuarioPorEmail(email)) {
+                avisoPoupUP("Houve um problema", "Nao foi encontrado contas cadastradas para: " + email);
+            } else {
+                avisoPoupUP("Verifique sua caixa no email", "Um email com informações para recuperar sua senha foi encaminhado para: " + email);
+                Portfolio.setRoot("telaLoginFXML");
+            }
         }
 
     }
