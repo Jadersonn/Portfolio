@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.fxml.FXML;
 
 /**
  * JavaFX App
@@ -14,6 +15,8 @@ import java.io.IOException;
 public class Portfolio extends Application {
 
     private static Scene scene;
+
+    
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,6 +27,10 @@ public class Portfolio extends Application {
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+    
+    static void setRoot(Parent proximaCenaParent) {
+       scene.setRoot(proximaCenaParent);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

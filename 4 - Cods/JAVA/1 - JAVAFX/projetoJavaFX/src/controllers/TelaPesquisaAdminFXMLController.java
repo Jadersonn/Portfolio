@@ -4,23 +4,16 @@
  */
 package controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
  * @author Jd
  */
-public class TelaEsqueciSenhaFXMLController implements Initializable {
-
-    @FXML
-    private AnchorPane AnchorPane;
+public class TelaPesquisaAdminFXMLController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -28,11 +21,6 @@ public class TelaEsqueciSenhaFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
-    @FXML
-    private void clickVoltar(ActionEvent event) throws IOException {
-        Portfolio.setRoot("telaLoginFXML");
-    }
-
+    }    
+    
 }

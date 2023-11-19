@@ -17,13 +17,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.SplitPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import objetos.Usuario;
 
@@ -44,6 +45,8 @@ public class TelaCadastroFXMLController implements Initializable {
     private PasswordField confirmeSenhaCadastro;
     @FXML
     private ImageView imgLogo;
+    @FXML
+    private SplitPane splitPane;
 
     /**
      * Initializes the controller class.
@@ -115,6 +118,13 @@ public class TelaCadastroFXMLController implements Initializable {
         Matcher matcher = pattern.matcher(email);
 
         return matcher.matches();
+    }
+
+    @FXML
+    private void teclaPressionada(KeyEvent event) throws NoSuchAlgorithmException, IOException {
+        if (event.getCode() == KeyCode.ENTER) {
+            clickCriarConta();
+        }
     }
 
 }

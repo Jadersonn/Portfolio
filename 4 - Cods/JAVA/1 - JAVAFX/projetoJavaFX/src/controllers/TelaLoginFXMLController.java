@@ -12,15 +12,18 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import objetos.Usuario;
 
 /**
  * FXML Controller class
@@ -54,8 +57,7 @@ public class TelaLoginFXMLController implements Initializable {
         } catch (Exception e) {
             System.err.println("Erro ao carregar a imagem: " + e.getMessage());
         }
-        
-       
+
     }
 
     @FXML
@@ -69,17 +71,31 @@ public class TelaLoginFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickContinuar() throws NoSuchAlgorithmException {
-        ConexaoDAO conexao = new ConexaoDAO();
-        UsuarioDAO usuarioLogin = new UsuarioDAO(conexao.conectaBD());
-        Usuario userLogin = new Usuario();
-        if(usuarioLogin.realizarLogin(emailLogin.getText(), senhaLogin.getText())){
-            System.out.println("Logado");
-        }else{
-            System.out.println("Houve um erro");
+    private void clickContinuar() throws NoSuchAlgorithmException, IOException {
+        String email = emailLogin.getText();
+        String senha = senhaLogin.getText();
+        if (email.isEmpty() || senha.isEmpty()) {
+        } else {
+            ConexaoDAO conexao = new ConexaoDAO();
+            UsuarioDAO usuarioLogin = new UsuarioDAO(conexao.conectaBD());
+            
+            if (null != usuarioLogin.realizarLogin(email, senha)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaFXML.fxml"));
+                Parent proximaCenaParent = loader.load();
+                TelaPesquisaFXMLController controllerTelaPesquisa = loader.getController();
+                controllerTelaPesquisa.receberDados(usuarioLogin.realizarLogin(email, senha));
+                Portfolio.setRoot(proximaCenaParent);
+            } else {
+                usuarioLogin.alertBd("Usuario nao encontrado.");
+            }
         }
-        
-        
+    }
+
+    @FXML
+    private void teclaPressionada(KeyEvent event) throws NoSuchAlgorithmException, IOException {
+        if (event.getCode() == KeyCode.ENTER) {
+            clickContinuar();
+        }
     }
 
 }

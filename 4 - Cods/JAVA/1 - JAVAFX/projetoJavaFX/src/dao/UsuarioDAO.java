@@ -40,18 +40,23 @@ public class UsuarioDAO {
         }
         return null;
     }
-    public boolean realizarLogin(String email, String senha) throws NoSuchAlgorithmException {
+
+    public Usuario realizarLogin(String email, String senha) throws NoSuchAlgorithmException {
         String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, email);
             statement.setString(2, converterSenha(senha));
 
             try (ResultSet resultSet = statement.executeQuery()) {
-                return resultSet.next(); 
+                if (resultSet.next()) {
+                    return criarUsuario(resultSet);
+                } else {
+                    return null;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Lida com a exceção de SQL
-            return false;
+            return null;
         }
     }
 
@@ -120,7 +125,7 @@ public class UsuarioDAO {
         return usuario;
     }
 
-    private void alertBd(String avisoConexao) {
+    public void alertBd(String avisoConexao) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("");
         alert.setTitle("Houve um problema no Banco de dados");
@@ -144,16 +149,16 @@ public class UsuarioDAO {
 
         return mensagem.toString();
     }
-    
-    private String converterSenha(String senha) throws NoSuchAlgorithmException, NoSuchAlgorithmException{
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                byte[] hashBytes = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
 
-                // Convertendo o array de bytes para representação hexadecimal
-                StringBuilder hexStringBuilder = new StringBuilder();
-                for (byte b : hashBytes) {
-                    hexStringBuilder.append(String.format("%02x", b));
-                }
-                return hexStringBuilder.toString();
+    private String converterSenha(String senha) throws NoSuchAlgorithmException, NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hashBytes = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
+
+        // Convertendo o array de bytes para representação hexadecimal
+        StringBuilder hexStringBuilder = new StringBuilder();
+        for (byte b : hashBytes) {
+            hexStringBuilder.append(String.format("%02x", b));
+        }
+        return hexStringBuilder.toString();
     }
 }
