@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaEsqueciSenhaFXMLController">
-   <children>
-      <Text layoutX="83.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AINDA NAO IMPLEMENTADO" />
-      <Button layoutX="57.0" layoutY="150.0" mnemonicParsing="false" onAction="#clickVoltar" text="VOLTAR" />
-   </children>
-</AnchorPane>
+<SplitPane fx:id="splitPane" dividerPositions="0.41304347826086957" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#teclaPressionada" pickOnBounds="false" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaEsqueciSenhaFXMLController">
+   <items>
+      <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Text layoutX="26.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESQUECI A SENHA">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informe seu email:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="emailEsqueceuSenha" layoutX="9.0" layoutY="180.0" prefHeight="31.0" prefWidth="241.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Button layoutX="119.0" layoutY="245.0" mnemonicParsing="false" onAction="#clickContinuar" prefHeight="39.0" prefWidth="130.0" text="CONTINUAR">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="9.0" layoutY="245.0" mnemonicParsing="false" onAction="#clickVoltar" prefHeight="39.0" prefWidth="104.0" text="VOLTAR">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <rotationAxis>
+            <Point3D y="50.0" z="1.0" />
+         </rotationAxis>
+      </AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="341.0">
+         <children>
+            <ImageView fx:id="imgLogo" fitHeight="261.0" fitWidth="310.0" layoutX="60.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>

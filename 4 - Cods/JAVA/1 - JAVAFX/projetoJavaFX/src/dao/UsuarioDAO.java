@@ -40,6 +40,22 @@ public class UsuarioDAO {
         }
         return null;
     }
+    public Usuario obterUsuarioPorEmail(String email) {
+        String sql = "SELECT * FROM usuario WHERE email = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return criarUsuario(resultSet);
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Lida com a exceção de SQL
+            return null;
+        }
+    }
 
     public Usuario realizarLogin(String email, String senha) throws NoSuchAlgorithmException {
         String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
