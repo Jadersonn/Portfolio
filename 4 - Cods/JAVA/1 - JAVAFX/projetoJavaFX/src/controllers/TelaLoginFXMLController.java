@@ -28,7 +28,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author INFO
+ * @author Jd
  */
 public class TelaLoginFXMLController implements Initializable {
 
@@ -78,13 +78,23 @@ public class TelaLoginFXMLController implements Initializable {
         } else {
             ConexaoDAO conexao = new ConexaoDAO();
             UsuarioDAO usuarioLogin = new UsuarioDAO(conexao.conectaBD());
-            
+
             if (null != usuarioLogin.realizarLogin(email, senha)) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaFXML.fxml"));
-                Parent proximaCenaParent = loader.load();
-                TelaPesquisaFXMLController controllerTelaPesquisa = loader.getController();
-                controllerTelaPesquisa.receberDados(usuarioLogin.realizarLogin(email, senha));
-                Portfolio.setRoot(proximaCenaParent);
+                FXMLLoader loader = new FXMLLoader();
+                if (usuarioLogin.obterUsuarioPorEmail(email).isAdministrador()) {
+                    loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaAdminFXML.fxml"));
+                    Parent proximaCenaParent = loader.load();
+                    TelaPesquisaAdminFXMLController controllerTelaPesquisaAdmin = loader.getController();
+                    controllerTelaPesquisaAdmin.receberDados(usuarioLogin.realizarLogin(email, senha));
+                    Portfolio.setRoot(proximaCenaParent);
+                } else {
+                    loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaFXML.fxml"));
+                    Parent proximaCenaParent = loader.load();
+                    TelaPesquisaFXMLController controllerTelaPesquisa = loader.getController();
+                    controllerTelaPesquisa.receberDados(usuarioLogin.realizarLogin(email, senha));
+                    Portfolio.setRoot(proximaCenaParent);
+                }
+
             } else {
                 usuarioLogin.alertBd("Usuario nao encontrado.");
             }

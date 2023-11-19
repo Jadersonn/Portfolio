@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaCadastrarItensFXMLController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="480.0" prefWidth="640.0">
+         <children>
+            <Text fx:id="msgOla" layoutX="495.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <MenuButton fx:id="opcoes" layoutX="26.0" layoutY="19.0" mnemonicParsing="false" text="OPÇÕES">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#clickItensSalvos" text="Itens Salvos" />
+                  <MenuItem mnemonicParsing="false" onAction="#clickConfig" text="Configurações" />
+                  <MenuItem mnemonicParsing="false" onAction="#clickSair" text="Sair" />
+               </items>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </MenuButton>
+            <Button layoutX="26.0" layoutY="132.0" mnemonicParsing="false" onAction="#clickCadastrarCarro" text="Cadastrar Carro">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="153.0" layoutY="132.0" mnemonicParsing="false" onAction="#clickCadastrarModelo" text="Cadastrar Modelo">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="300.0" layoutY="132.0" mnemonicParsing="false" onAction="#clickCadastrarPeca" text="Cadastrar Peça">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Text layoutX="23.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastros:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alterar:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="23.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Excluir:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button layoutX="502.0" layoutY="402.0" mnemonicParsing="false" onAction="#clickVoltar" prefHeight="39.0" prefWidth="99.0" text="Voltar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button layoutX="36.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarCarro" text="Alterar Carro">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="153.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarModelo" text="Alterar Modelo">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="290.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarPeca" text="Alterar Peça">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="407.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarUsuario" text="Alterar Usuario">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="36.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverCarro" text="Excluir Carro">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="153.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverModelo" text="Excluir Modelo">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="290.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverPeca" text="Excluir Peça">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="407.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverUsuario" text="Excluir Usuario">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
