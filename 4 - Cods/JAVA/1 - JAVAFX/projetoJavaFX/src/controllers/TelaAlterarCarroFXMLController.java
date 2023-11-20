@@ -45,16 +45,18 @@ public class TelaAlterarCarroFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickCadastrar(ActionEvent event) {
-
+    private void clickCadastrar(ActionEvent event) throws IOException {
+        Portfolio.setRoot("telaCadastrarItensFXML");
     }
 
     @FXML
-    private void clickConfig(ActionEvent event) {
+    private void clickConfig(ActionEvent event) throws IOException {
+        Portfolio.setRoot("telaConfigFXML");
     }
 
     @FXML
-    private void clickSair(ActionEvent event) {
+    private void clickSair(ActionEvent event) throws IOException {
+        Portfolio.setRoot("telaLoginFXML");
     }
 
     @FXML

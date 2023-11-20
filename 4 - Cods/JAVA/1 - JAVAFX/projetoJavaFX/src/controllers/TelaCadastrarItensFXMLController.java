@@ -42,13 +42,13 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickAlterarCarro(ActionEvent event) throws IOException {
+    private void clickAlterarCarro() throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("");
         alert.setTitle("Informação:");
         alert.setContentText("Selecione e dê duplo clique no carro desejado para altera-lo.");
         alert.showAndWait();
-        Portfolio.setRoot("TelaPesquisaAdminFXML");
+        Portfolio.setRoot("telaPesquisaAdminFXML");
     }
 
     @FXML
@@ -57,7 +57,13 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickRemoverCarro(ActionEvent event) {
+    private void clickRemoverCarro(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Clique no botão excluir para excluir o Carro.");
+        alert.showAndWait();
+        Portfolio.setRoot("telaPesquisaAdminFXML");
     }
 
     @FXML
@@ -65,14 +71,6 @@ public class TelaCadastrarItensFXMLController implements Initializable {
 
     }
 
-    private void clickItensSalvos(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader = new FXMLLoader(getClass().getResource("/view/telaItensFavFXML.fxml"));
-        Parent proximaCenaParent = loader.load();
-        //TelaPesquisaAdminFXMLController controllerTelaPesquisaAdmin = loader.getController();
-        //controllerTelaPesquisaAdmin.receberDados(usuarioLogin.realizarLogin(email, senha));
-        //Portfolio.setRoot(proximaCenaParent);
-    }
 
     @FXML
     private void clickConfig(ActionEvent event) throws IOException {

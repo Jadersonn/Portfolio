@@ -7,6 +7,8 @@ package controllers.adminUser;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import objetos.Carro;
+import objetos.Usuario;
 
 /**
  * FXML Controller class
@@ -18,9 +20,12 @@ public class TelaConfigAdminFXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private Carro carro = new Carro();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+    public void receberDados(Carro carroRecebido) {
+        carro = carroRecebido;
+    }
 }

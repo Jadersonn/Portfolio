@@ -4,15 +4,25 @@
  */
 package controllers;
 
+import dao.CarroDAO;
+import dao.ConexaoDAO;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
+import objetos.Carro;
 import objetos.Usuario;
 
 /**
@@ -33,28 +43,68 @@ public class TelaPesquisaFXMLController implements Initializable {
     @FXML
     private MenuButton opcoes;
     @FXML
-    private TableView<?> tablleview;
+    private TableView<Carro> tableView;
+    @FXML
+    private TableColumn<Carro, String> tcCarro;
+    @FXML
+    private TableColumn<Carro, String> tcDescricao;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        configurarTableView();
+        carregarCarrosNaTableView();
+    }
 
+    private void configurarTableView() {
+        // Configurar as colunas da TableView
+        tcCarro.setCellValueFactory(new PropertyValueFactory<>("nomeCarro"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricaoCarro"));
+
+    }
+
+    private void carregarCarrosNaTableView() {
+        ConexaoDAO connection = new ConexaoDAO();
+        CarroDAO carroDAO = new CarroDAO(connection.conectaBD());
+        List<Carro> carros = carroDAO.obterTodosCarros();
+
+        // Configurar os carros na TableView
+        tableView.getItems().addAll(carros);
     }
 
     public void receberDados(Usuario dadosUsuario) {
-        nome.setText(dadosUsuario.getNome());
+        nome.setText("Seja bem vindo, " + dadosUsuario.getNome());
         this.usuario = dadosUsuario;
     }
 
-    private void clickVoltar() throws IOException {
+    @FXML
+    private void clickConfig() throws IOException {
+        Portfolio.setRoot("telaConfigFXML");
+    }
+
+    @FXML
+    private void clickSair() throws IOException {
         Portfolio.setRoot("telaLoginFXML");
     }
 
     @FXML
-    private void clickConfig(ActionEvent event) {
+    private void abraConfigCarro(KeyEvent event) throws IOException {
+        if (event.getCode() == KeyCode.ENTER) {
+            Carro selectedCarro = tableView.getSelectionModel().getSelectedItem();
+            if (selectedCarro != null) {
+                abrirPaginaDoCarro(selectedCarro);
+            }
+        }
     }
 
-    @FXML
-    private void clickSair(ActionEvent event) {
+    private void abrirPaginaDoCarro(Carro carroSelecionado) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader(getClass().getResource("/view/telaConfigAdminFXML.fxml"));
+        Parent proximaCenaParent = loader.load();
+        TelaAlterarCarroFXMLController alterarCarro = loader.getController();
+        alterarCarro.receberDados(carroSelecionado);
+        Portfolio.setRoot(proximaCenaParent);
     }
+
+    
 
 }
