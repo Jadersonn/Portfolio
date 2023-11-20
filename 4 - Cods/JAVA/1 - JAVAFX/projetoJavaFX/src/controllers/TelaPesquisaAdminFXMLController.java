@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +21,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import objetos.Carro;
 import objetos.Usuario;
@@ -41,7 +47,7 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     @FXML
     private MenuButton opcoes;
     @FXML
-    private TableView<Carro> tablleview;
+    private TableView<Carro> tableView;
     @FXML
     private TableColumn<Carro, String> tcCarro;
     @FXML
@@ -66,16 +72,6 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickItensSalvos(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader = new FXMLLoader(getClass().getResource("/view/telaItensFavFXML.fxml"));
-        Parent proximaCenaParent = loader.load();
-        //TelaPesquisaAdminFXMLController controllerTelaPesquisaAdmin = loader.getController();
-        //controllerTelaPesquisaAdmin.receberDados(usuarioLogin.realizarLogin(email, senha));
-        //Portfolio.setRoot(proximaCenaParent);
-    }
-
-    @FXML
     private void clickConfig(ActionEvent event) throws IOException {
         Portfolio.setRoot("telaConfigFXML");
     }
@@ -91,8 +87,9 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
         List<Carro> carros = carroDAO.obterTodosCarros();
 
         // Configurar os carros na TableView
-        tablleview.getItems().addAll(carros);
+        tableView.getItems().addAll(carros);
     }
+
     private void configurarTableView() {
         // Configurar as colunas da TableView
         tcCarro.setCellValueFactory(new PropertyValueFactory<>("nomeCarro"));
@@ -122,13 +119,57 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
             }
         });
     }
-    
+
     private void excluirCarro(Carro carro) {
         ConexaoDAO connection = new ConexaoDAO();
         CarroDAO carroDAO = new CarroDAO(connection.conectaBD());
         carroDAO.excluirCarro(carro.getCarroId());
         // Atualizar a TableView após excluir
-        tablleview.getItems().remove(carro);
+        tableView.getItems().remove(carro);
+    }
+
+    private void abrirPaginaDoCarro(Carro carroSelecionado) throws IOException {
+        System.out.println("Entrou");
+        Portfolio.setRoot("telaConfigAdminFXML");
+    }
+
+    private void alterarDadosCarro(Carro carroSelecionado) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader(getClass().getResource("/view/telaAlterarCarroFXML.fxml"));
+        Parent proximaCenaParent = loader.load();
+        TelaAlterarCarroFXMLController alterarCarro = loader.getController();
+        alterarCarro.receberDados(carroSelecionado);
+        Portfolio.setRoot(proximaCenaParent);
+    }
+
+    @FXML
+    private void abraConfigCarro(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            // Lógica para abrir a página do carro
+            Carro selectedCarro = tableView.getSelectionModel().getSelectedItem();
+            if (selectedCarro != null) {
+                try {
+                    abrirPaginaDoCarro(selectedCarro);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPesquisaAdminFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+    @FXML
+    private void editarCarro(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            // Lógica para abrir as configurações do carro
+            Carro selectedCarro = tableView.getSelectionModel().getSelectedItem();
+            if (selectedCarro != null) {
+                try {
+                    alterarDadosCarro(selectedCarro);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPesquisaAdminFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 
 }

@@ -31,7 +31,7 @@
          <children>
             <ScrollPane prefHeight="395.0" prefWidth="592.0">
                <content>
-                  <TableView fx:id="tablleview" prefHeight="387.0" prefWidth="595.0">
+                  <TableView fx:id="tableView" onKeyPressed="#abraConfigCarro" onMouseClicked="#editarCarro" prefHeight="387.0" prefWidth="595.0">
                      <columns>
                         <TableColumn fx:id="tcCarro" prefWidth="114.0" text="Carro" />
                         <TableColumn fx:id="tcDescricao" prefWidth="285.0" text="Descrição" />

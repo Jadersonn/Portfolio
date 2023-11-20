@@ -4,9 +4,19 @@
  */
 package controllers;
 
+import dao.CarroDAO;
+import dao.ConexaoDAO;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import objetos.Carro;
 
 /**
  * FXML Controller class
@@ -15,12 +25,57 @@ import javafx.fxml.Initializable;
  */
 public class TelaAlterarCarroFXMLController implements Initializable {
 
+    @FXML
+    private Text msgOla;
+    @FXML
+    private MenuButton opcoes;
+    @FXML
+    private TextField nomeCarro;
+    @FXML
+    private TextArea descricaoCarro;
+
+    private Carro carro = new Carro();
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
+    }
+
+    @FXML
+    private void clickCadastrar(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void clickConfig(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickSair(ActionEvent event) {
+    }
+
+    @FXML
+    private void salvarCarro(ActionEvent event) throws IOException {
+        ConexaoDAO connection = new ConexaoDAO();
+        CarroDAO carroDAO = new CarroDAO(connection.conectaBD());
+        carro.setNomeCarro(nomeCarro.getText());
+        carro.setDescricaoCarro(descricaoCarro.getText());
+        carroDAO.atualizarCarro(carro);
+        Portfolio.setRoot("telaPesquisaAdminFXML");
+    }
+
+    void receberDados(Carro carroSelecionado) {
+        carro = carroSelecionado;
+        nomeCarro.setText(carro.getNomeCarro());
+        descricaoCarro.setText(carro.getDescricaoCarro());
+    }
+
+    @FXML
+    private void clickVoltar(ActionEvent event) throws IOException {
+        Portfolio.setRoot("telaPesquisaAdminFXML");
+    }
+
 }

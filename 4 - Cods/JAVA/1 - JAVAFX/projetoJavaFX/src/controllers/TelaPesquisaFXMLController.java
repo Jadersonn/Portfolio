@@ -37,10 +37,10 @@ public class TelaPesquisaFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
-    public void receberDados(Usuario dadosUsuario){
+    public void receberDados(Usuario dadosUsuario) {
         nome.setText(dadosUsuario.getNome());
         this.usuario = dadosUsuario;
     }
@@ -50,16 +50,11 @@ public class TelaPesquisaFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickItensSalvos(ActionEvent event) {
-    }
-
-    @FXML
     private void clickConfig(ActionEvent event) {
     }
 
     @FXML
     private void clickSair(ActionEvent event) {
     }
-    
-    
+
 }

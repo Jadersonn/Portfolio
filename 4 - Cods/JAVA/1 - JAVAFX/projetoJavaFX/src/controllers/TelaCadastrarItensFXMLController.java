@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.MenuButton;
 import javafx.scene.text.Text;
 
@@ -33,9 +34,7 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-
+    }
 
     @FXML
     private void clickCadastrarCarro(ActionEvent event) throws IOException {
@@ -43,24 +42,18 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickCadastrarModelo(ActionEvent event) {
-    }
-
-    
-    @FXML
-    private void clickAlterarCarro(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickAlterarModelo(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickAlterarPeca(ActionEvent event) {
+    private void clickAlterarCarro(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Selecione e dê duplo clique no carro desejado para altera-lo.");
+        alert.showAndWait();
+        Portfolio.setRoot("TelaPesquisaAdminFXML");
     }
 
     @FXML
     private void clickAlterarUsuario(ActionEvent event) {
+
     }
 
     @FXML
@@ -68,21 +61,10 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickRemoverModelo(ActionEvent event) {
-    }
-
-    @FXML
-    private void clickRemoverPeca(ActionEvent event) {
-    }
-
-    @FXML
     private void clickRemoverUsuario(ActionEvent event) {
-        
-    }
-    
-    
 
-    @FXML
+    }
+
     private void clickItensSalvos(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader = new FXMLLoader(getClass().getResource("/view/telaItensFavFXML.fxml"));
@@ -100,10 +82,6 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     @FXML
     private void clickSair(ActionEvent event) throws IOException {
         Portfolio.setRoot("telaLoginFXML");
-    }
-
-    @FXML
-    private void clickCadastrarPeca(ActionEvent event) {
     }
 
     @FXML

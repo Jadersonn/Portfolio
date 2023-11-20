@@ -19,7 +19,6 @@
             </Text>
             <MenuButton fx:id="opcoes" layoutX="26.0" layoutY="19.0" mnemonicParsing="false" text="OPÇÕES">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#clickItensSalvos" text="Itens Salvos" />
                   <MenuItem mnemonicParsing="false" onAction="#clickConfig" text="Configurações" />
                   <MenuItem mnemonicParsing="false" onAction="#clickSair" text="Sair" />
                </items>
@@ -28,14 +27,6 @@
                </font>
             </MenuButton>
             <Button layoutX="26.0" layoutY="132.0" mnemonicParsing="false" onAction="#clickCadastrarCarro" text="Cadastrar Carro">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            <Button layoutX="153.0" layoutY="132.0" mnemonicParsing="false" onAction="#clickCadastrarModelo" text="Cadastrar Modelo">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            <Button layoutX="300.0" layoutY="132.0" mnemonicParsing="false" onAction="#clickCadastrarPeca" text="Cadastrar Peça">
                <font>
                   <Font size="14.0" />
                </font></Button>
@@ -65,15 +56,7 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="153.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarModelo" text="Alterar Modelo">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="290.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarPeca" text="Alterar Peça">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="407.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarUsuario" text="Alterar Usuario">
+      <Button layoutX="148.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickAlterarUsuario" text="Alterar Usuario">
          <font>
             <Font size="14.0" />
          </font></Button>
@@ -81,15 +64,7 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="153.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverModelo" text="Excluir Modelo">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="290.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverPeca" text="Excluir Peça">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="407.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverUsuario" text="Excluir Usuario">
+      <Button layoutX="148.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickRemoverUsuario" text="Excluir Usuario">
          <font>
             <Font size="14.0" />
          </font></Button>

@@ -51,16 +51,6 @@ public class TelaCadastroCarroFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickItensSalvos(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader = new FXMLLoader(getClass().getResource("/view/telaItensFavFXML.fxml"));
-        Parent proximaCenaParent = loader.load();
-        //TelaPesquisaAdminFXMLController controllerTelaPesquisaAdmin = loader.getController();
-        //controllerTelaPesquisaAdmin.receberDados(usuarioLogin.realizarLogin(email, senha));
-        //Portfolio.setRoot(proximaCenaParent);
-    }
-
-    @FXML
     private void clickConfig(ActionEvent event) throws IOException {
         Portfolio.setRoot("telaConfigFXML");
     }
