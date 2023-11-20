@@ -52,7 +52,8 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickAlterarUsuario(ActionEvent event) {
+    private void clickAlterarUsuario(ActionEvent event) throws IOException {
+        Portfolio.setRoot("telaPesquisaUsuarioFXML");
 
     }
 
@@ -67,10 +68,9 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickRemoverUsuario(ActionEvent event) {
-
+    private void clickRemoverUsuario(ActionEvent event) throws IOException {
+        Portfolio.setRoot("telaPesquisaUsuarioFXML");
     }
-
 
     @FXML
     private void clickConfig(ActionEvent event) throws IOException {

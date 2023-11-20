@@ -21,7 +21,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
@@ -44,8 +43,6 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     Usuario usuarioLogado = new Usuario();
     @FXML
     private Text msgOla;
-    @FXML
-    private MenuButton opcoes;
     @FXML
     private TableView<Carro> tableView;
     @FXML
