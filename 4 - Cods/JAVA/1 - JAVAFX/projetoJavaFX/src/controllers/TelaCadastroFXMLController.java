@@ -112,8 +112,9 @@ public class TelaCadastroFXMLController implements Initializable {
     }
 
     private static boolean emailValido(String email) {
-        // Expressão regular simples para verificar o formato do e-mail
+        // Expressão regular para verificar o formato do e-mail
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
 
