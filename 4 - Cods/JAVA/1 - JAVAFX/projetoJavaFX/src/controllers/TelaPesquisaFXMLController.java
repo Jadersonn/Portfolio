@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.scene.Parent;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
@@ -21,6 +22,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+=======
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableView;
+>>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
 import javafx.scene.text.Text;
 import objetos.Carro;
 import objetos.Usuario;
@@ -43,6 +48,7 @@ public class TelaPesquisaFXMLController implements Initializable {
     @FXML
     private MenuButton opcoes;
     @FXML
+<<<<<<< HEAD
     private TableView<Carro> tableView;
     @FXML
     private TableColumn<Carro, String> tcCarro;
@@ -83,10 +89,26 @@ public class TelaPesquisaFXMLController implements Initializable {
 
     @FXML
     private void clickSair() throws IOException {
+=======
+    private TableView<?> tablleview;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+    }
+
+    public void receberDados(Usuario dadosUsuario) {
+        nome.setText(dadosUsuario.getNome());
+        this.usuario = dadosUsuario;
+    }
+
+    private void clickVoltar() throws IOException {
+>>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
         Portfolio.setRoot("telaLoginFXML");
     }
 
     @FXML
+<<<<<<< HEAD
     private void abraConfigCarro(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
             Carro selectedCarro = tableView.getSelectionModel().getSelectedItem();
@@ -107,4 +129,13 @@ public class TelaPesquisaFXMLController implements Initializable {
 
     
 
+=======
+    private void clickConfig(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickSair(ActionEvent event) {
+    }
+
+>>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
 }

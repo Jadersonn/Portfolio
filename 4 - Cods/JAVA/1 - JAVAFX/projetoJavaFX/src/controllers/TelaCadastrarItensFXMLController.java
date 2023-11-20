@@ -42,13 +42,21 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
+<<<<<<< HEAD
     private void clickAlterarCarro() throws IOException {
+=======
+    private void clickAlterarCarro(ActionEvent event) throws IOException {
+>>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("");
         alert.setTitle("Informação:");
         alert.setContentText("Selecione e dê duplo clique no carro desejado para altera-lo.");
         alert.showAndWait();
+<<<<<<< HEAD
         Portfolio.setRoot("telaPesquisaAdminFXML");
+=======
+        Portfolio.setRoot("TelaPesquisaAdminFXML");
+>>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
     }
 
     @FXML
@@ -57,6 +65,7 @@ public class TelaCadastrarItensFXMLController implements Initializable {
     }
 
     @FXML
+<<<<<<< HEAD
     private void clickRemoverCarro(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("");
@@ -64,6 +73,9 @@ public class TelaCadastrarItensFXMLController implements Initializable {
         alert.setContentText("Clique no botão excluir para excluir o Carro.");
         alert.showAndWait();
         Portfolio.setRoot("telaPesquisaAdminFXML");
+=======
+    private void clickRemoverCarro(ActionEvent event) {
+>>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
     }
 
     @FXML
@@ -71,6 +83,17 @@ public class TelaCadastrarItensFXMLController implements Initializable {
 
     }
 
+<<<<<<< HEAD
+=======
+    private void clickItensSalvos(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader(getClass().getResource("/view/telaItensFavFXML.fxml"));
+        Parent proximaCenaParent = loader.load();
+        //TelaPesquisaAdminFXMLController controllerTelaPesquisaAdmin = loader.getController();
+        //controllerTelaPesquisaAdmin.receberDados(usuarioLogin.realizarLogin(email, senha));
+        //Portfolio.setRoot(proximaCenaParent);
+    }
+>>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
 
     @FXML
     private void clickConfig(ActionEvent event) throws IOException {
