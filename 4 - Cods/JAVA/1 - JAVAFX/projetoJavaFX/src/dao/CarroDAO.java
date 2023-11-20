@@ -79,10 +79,12 @@ public class CarroDAO {
     }
 
     private Carro criarCarro(ResultSet resultSet) throws SQLException {
-        Carro carro = new Carro();
-        carro.setNomeCarro(resultSet.getString("nomeCarro"));
-        carro.setDescricaoCarro(resultSet.getString("DescricaoCarro"));
-        return carro;
-    }
+    Carro carro = new Carro();
+    carro.setCarroId(resultSet.getInt("carroId"));
+    carro.setNomeCarro(resultSet.getString("nomeCarro"));
+    carro.setDescricaoCarro(resultSet.getString("DescricaoCarro"));
+    return carro;
+}
+
 
 }

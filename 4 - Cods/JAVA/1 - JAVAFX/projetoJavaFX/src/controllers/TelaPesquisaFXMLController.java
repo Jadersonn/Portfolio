@@ -7,10 +7,11 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import objetos.Usuario;
 
@@ -24,10 +25,15 @@ public class TelaPesquisaFXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @FXML
     private Text nome;
 
-    private boolean admin;
+    private Usuario usuario;
+    @FXML
+    private Text msgOla;
+    @FXML
+    private MenuButton opcoes;
+    @FXML
+    private TableView<?> tablleview;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,17 +42,24 @@ public class TelaPesquisaFXMLController implements Initializable {
 
     public void receberDados(Usuario dadosUsuario){
         nome.setText(dadosUsuario.getNome());
-        admin = dadosUsuario.isAdministrador();
+        this.usuario = dadosUsuario;
     }
 
-    @FXML
     private void clickVoltar() throws IOException {
         Portfolio.setRoot("telaLoginFXML");
     }
 
-    private void mudarParaAdmin() throws IOException {
-        if (admin) {
-            Portfolio.setRoot("TelaPesquisaAdminFXML");
-        }
+    @FXML
+    private void clickItensSalvos(ActionEvent event) {
     }
+
+    @FXML
+    private void clickConfig(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickSair(ActionEvent event) {
+    }
+    
+    
 }
