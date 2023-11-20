@@ -129,10 +129,6 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     }
 
     private void abrirPaginaDoCarro(Carro carroSelecionado) throws IOException {
-<<<<<<< HEAD
-=======
-        System.out.println("Entrou");
->>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
         Portfolio.setRoot("telaConfigAdminFXML");
     }
 

@@ -81,22 +81,15 @@ public class TelaLoginFXMLController implements Initializable {
 
             if (null != usuarioLogin.realizarLogin(email, senha)) {
                 FXMLLoader loader = new FXMLLoader();
-<<<<<<< HEAD
                 
-=======
->>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
                 if (usuarioLogin.obterUsuarioPorEmail(email).isAdministrador()) {
                     loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaAdminFXML.fxml"));
                     Parent proximaCenaParent = loader.load();
                     TelaPesquisaAdminFXMLController controllerTelaPesquisaAdmin = loader.getController();
                     controllerTelaPesquisaAdmin.receberDados(usuarioLogin.realizarLogin(email, senha));
                     Portfolio.setRoot(proximaCenaParent);
-<<<<<<< HEAD
                 }
                 if (!usuarioLogin.obterUsuarioPorEmail(email).isAdministrador()){
-=======
-                } else {
->>>>>>> 690cd04904066c293c2081f25931822e3f5b90d8
                     loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaFXML.fxml"));
                     Parent proximaCenaParent = loader.load();
                     TelaPesquisaFXMLController controllerTelaPesquisa = loader.getController();
