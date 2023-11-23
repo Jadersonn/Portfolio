@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableCell;
@@ -136,7 +137,12 @@ public class TelaPesquisaUsuarioFXMLController implements Initializable {
     }
 
     @FXML
-    private void clickConfig(ActionEvent event) {
+    private void clickConfig(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Função ainda não configurada.");
+        alert.showAndWait();
     }
 
     @FXML

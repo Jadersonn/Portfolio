@@ -4,9 +4,13 @@
  */
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import objetos.Usuario;
 
 /**
@@ -22,10 +26,19 @@ public class TelaAlterarUsuarioFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    @FXML
+    private void clickConfig(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Função ainda não configurada.");
+        alert.showAndWait();
+    }
 
     void receberDados(Usuario usuarioSelecionado) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

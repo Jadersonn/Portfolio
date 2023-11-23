@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -53,6 +54,7 @@ public class TelaPesquisaFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         configurarTableView();
         carregarCarrosNaTableView();
+        usuario = Portfolio.getUsuarioFinal();
     }
 
     private void configurarTableView() {
@@ -74,11 +76,16 @@ public class TelaPesquisaFXMLController implements Initializable {
     public void receberDados(Usuario dadosUsuario) {
         nome.setText("Seja bem vindo, " + dadosUsuario.getNome());
         this.usuario = dadosUsuario;
+        Portfolio.setUsuarioFinal(usuario);
     }
 
     @FXML
-    private void clickConfig() throws IOException {
-        Portfolio.setRoot("telaConfigFXML");
+    private void clickConfig(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Função ainda não configurada.");
+        alert.showAndWait();
     }
 
     @FXML

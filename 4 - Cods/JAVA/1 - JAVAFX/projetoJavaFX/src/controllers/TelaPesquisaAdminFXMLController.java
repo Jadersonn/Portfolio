@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableCell;
@@ -40,7 +41,7 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    Usuario usuarioLogado = new Usuario();
+    Usuario usuarioLogado;
     @FXML
     private Text msgOla;
     @FXML
@@ -51,16 +52,20 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     private TableColumn<Carro, String> tcDescricao;
     @FXML
     private TableColumn<Carro, Void> tcExcluir;
+    @FXML
+    private MenuButton opcoes;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarTableView();
         carregarCarrosNaTableView();
+        usuarioLogado = Portfolio.getUsuarioFinal();
     }
 
     void receberDados(Usuario userLogin) {
         this.usuarioLogado = userLogin;
         msgOla.setText("Seja bem vindo, " + usuarioLogado.getNome());
+        Portfolio.setUsuarioFinal(userLogin);
     }
 
     @FXML
@@ -70,7 +75,11 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
 
     @FXML
     private void clickConfig(ActionEvent event) throws IOException {
-        Portfolio.setRoot("telaConfigFXML");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Função ainda não configurada.");
+        alert.showAndWait();
     }
 
     @FXML
@@ -126,7 +135,12 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     }
 
     private void abrirPaginaDoCarro(Carro carroSelecionado) throws IOException {
-        Portfolio.setRoot("telaConfigAdminFXML");
+        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader(getClass().getResource("/view/telaConfigAdminFXML.fxml"));
+        Parent proximaCenaParent = loader.load();
+        TelaConfigAdminFXMLController alterarCarro = loader.getController();
+        alterarCarro.receberDados(carroSelecionado);
+        Portfolio.setRoot(proximaCenaParent);
     }
 
     private void alterarDadosCarro(Carro carroSelecionado) throws IOException {

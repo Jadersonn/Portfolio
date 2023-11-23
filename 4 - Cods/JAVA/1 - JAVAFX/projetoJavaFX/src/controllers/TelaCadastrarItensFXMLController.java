@@ -74,7 +74,11 @@ public class TelaCadastrarItensFXMLController implements Initializable {
 
     @FXML
     private void clickConfig(ActionEvent event) throws IOException {
-        Portfolio.setRoot("telaConfigFXML");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Função ainda não configurada.");
+        alert.showAndWait();
     }
 
     @FXML

@@ -43,7 +43,7 @@ public class TelaCadastroCarroFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void clickCadastrar(ActionEvent event) throws IOException {
@@ -52,7 +52,11 @@ public class TelaCadastroCarroFXMLController implements Initializable {
 
     @FXML
     private void clickConfig(ActionEvent event) throws IOException {
-        Portfolio.setRoot("telaConfigFXML");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("");
+        alert.setTitle("Informação:");
+        alert.setContentText("Função ainda não configurada.");
+        alert.showAndWait();
     }
 
     @FXML
@@ -62,20 +66,23 @@ public class TelaCadastroCarroFXMLController implements Initializable {
 
     @FXML
     private void salvarCarro(ActionEvent event) throws IOException {
-        ConexaoDAO connection = new ConexaoDAO();
-        CarroDAO carro = new CarroDAO(connection.conectaBD());
-        Carro carroCriado = new Carro();
-        carroCriado.setDescricaoCarro(descricaoCarro.getText());
-        carroCriado.setNomeCarro(nomeCarro.getText());
-        carro.salvarCarro(carroCriado);
-        
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText("");
-        alert.setTitle("Relatorio:");
-        alert.setContentText("Carro Cadastrado.");
-        alert.showAndWait();
-        Portfolio.setRoot("telaCadastrarItensFXML");
+        String text = nomeCarro.getText();
+        String text1 = descricaoCarro.getText();
+        if (!text.isEmpty() || !text1.isEmpty()) {
+            ConexaoDAO connection = new ConexaoDAO();
+            CarroDAO carro = new CarroDAO(connection.conectaBD());
+            Carro carroCriado = new Carro();
+            carroCriado.setDescricaoCarro(descricaoCarro.getText());
+            carroCriado.setNomeCarro(nomeCarro.getText());
+            carro.salvarCarro(carroCriado);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("");
+            alert.setTitle("Relatorio:");
+            alert.setContentText("Carro Cadastrado.");
+            alert.showAndWait();
+            Portfolio.setRoot("telaCadastrarItensFXML");
+        }
     }
-    
-    
+
 }

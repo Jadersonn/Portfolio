@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaPesquisaFXMLController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TelaPesquisaFXMLController">
    <children>
       <Text fx:id="msgOla" layoutX="263.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
          <font>
@@ -32,16 +27,12 @@
       </MenuButton>
       <AnchorPane layoutX="26.0" layoutY="54.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ScrollPane prefHeight="395.0" prefWidth="592.0">
-               <content>
-                  <TableView fx:id="tableView" onKeyPressed="#abraConfigCarro" prefHeight="387.0" prefWidth="595.0">
-                     <columns>
-                        <TableColumn fx:id="tcCarro" prefWidth="202.0" text="Carro" />
-                        <TableColumn fx:id="tcDescricao" prefWidth="382.0" text="Descrição" />
-                     </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
+            <TableView fx:id="tableView" onKeyPressed="#abraConfigCarro" prefHeight="387.0" prefWidth="595.0">
+               <columns>
+                  <TableColumn fx:id="tcCarro" prefWidth="202.0" text="Carro" />
+                  <TableColumn fx:id="tcDescricao" prefWidth="382.0" text="Descrição" />
+               </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>

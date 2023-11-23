@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import objetos.Usuario;
 
 /**
  * JavaFX App
@@ -15,7 +16,7 @@ import javafx.fxml.FXML;
 public class Portfolio extends Application {
 
     private static Scene scene;
-
+    static Usuario usuarioFinal;
     
 
     @Override
@@ -40,6 +41,13 @@ public class Portfolio extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+    
+    static void setUsuarioFinal(Usuario user){
+        usuarioFinal = user;
+    }
+    static Usuario getUsuarioFinal(){
+        return usuarioFinal;
     }
 
 }

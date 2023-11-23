@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,18 +28,14 @@
       </MenuButton>
       <AnchorPane layoutX="26.0" layoutY="54.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ScrollPane prefHeight="395.0" prefWidth="592.0">
-               <content>
-                  <TableView fx:id="tableView" onKeyPressed="#abraConfigUsuario" onMouseClicked="#editarPessoa" prefHeight="387.0" prefWidth="595.0">
-                     <columns>
-                        <TableColumn fx:id="tcUsuario" prefWidth="165.0" text="Nome" />
-                        <TableColumn fx:id="tcDescricao" prefWidth="230.0" text="Email" />
-                        <TableColumn fx:id="tcAdmin" prefWidth="109.0" text="Admin" />
-                        <TableColumn fx:id="tcExcluir" prefWidth="74.0" text="Excluir" />
-                     </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
+            <TableView fx:id="tableView" onKeyPressed="#abraConfigUsuario" onMouseClicked="#editarPessoa" prefHeight="387.0" prefWidth="595.0">
+               <columns>
+                  <TableColumn fx:id="tcUsuario" prefWidth="165.0" text="Nome" />
+                  <TableColumn fx:id="tcDescricao" prefWidth="230.0" text="Email" />
+                  <TableColumn fx:id="tcAdmin" prefWidth="109.0" text="Admin" />
+                  <TableColumn fx:id="tcExcluir" prefWidth="74.0" text="Excluir" />
+               </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>
