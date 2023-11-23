@@ -106,7 +106,7 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
             private final Button excluirButton = new Button("Excluir");
 
             {
-                // Adicionar ação para o botão Excluir
+                // Adicionar acao para o botão Excluir
                 excluirButton.setOnAction(event -> {
                     Carro carro = getTableView().getItems().get(getIndex());
                     excluirCarro(carro);
@@ -155,7 +155,7 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     @FXML
     private void abraConfigCarro(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            // Lógica para abrir a página do carro
+            // Verificacao para abrir a pagina do carro
             Carro selectedCarro = tableView.getSelectionModel().getSelectedItem();
             if (selectedCarro != null) {
                 try {
@@ -170,7 +170,7 @@ public class TelaPesquisaAdminFXMLController implements Initializable {
     @FXML
     private void editarCarro(MouseEvent event) {
         if (event.getClickCount() == 2) {
-            // Lógica para abrir as configurações do carro
+            // Verificacao para abrir a pagina do carro
             Carro selectedCarro = tableView.getSelectionModel().getSelectedItem();
             if (selectedCarro != null) {
                 try {

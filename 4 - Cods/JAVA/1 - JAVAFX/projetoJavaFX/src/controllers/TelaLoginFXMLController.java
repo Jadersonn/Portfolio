@@ -74,14 +74,15 @@ public class TelaLoginFXMLController implements Initializable {
     private void clickContinuar() throws NoSuchAlgorithmException, IOException {
         String email = emailLogin.getText();
         String senha = senhaLogin.getText();
+        //verificando caso email ou senha sejam vazios, nao realizar nada
         if (email.isEmpty() || senha.isEmpty()) {
         } else {
             ConexaoDAO conexao = new ConexaoDAO();
             UsuarioDAO usuarioLogin = new UsuarioDAO(conexao.conectaBD());
-
+            //caso o resultado seja null entao nao existe no banco de dados
             if (null != usuarioLogin.realizarLogin(email, senha)) {
                 FXMLLoader loader = new FXMLLoader();
-                
+                //usuario admin logado
                 if (usuarioLogin.obterUsuarioPorEmail(email).isAdministrador()) {
                     loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaAdminFXML.fxml"));
                     Parent proximaCenaParent = loader.load();
@@ -89,7 +90,8 @@ public class TelaLoginFXMLController implements Initializable {
                     controllerTelaPesquisaAdmin.receberDados(usuarioLogin.realizarLogin(email, senha));
                     Portfolio.setRoot(proximaCenaParent);
                 }
-                if (!usuarioLogin.obterUsuarioPorEmail(email).isAdministrador()){
+                //usuario comum
+                if (!usuarioLogin.obterUsuarioPorEmail(email).isAdministrador()) {
                     loader = new FXMLLoader(getClass().getResource("/view/telaPesquisaFXML.fxml"));
                     Parent proximaCenaParent = loader.load();
                     TelaPesquisaFXMLController controllerTelaPesquisa = loader.getController();
@@ -98,6 +100,7 @@ public class TelaLoginFXMLController implements Initializable {
                 }
 
             } else {
+                //mostra alert
                 usuarioLogin.alertBd("Usuario nao encontrado.");
             }
         }

@@ -42,7 +42,7 @@ public class Portfolio extends Application {
     public static void main(String[] args) {
         launch();
     }
-    
+    //utilizada para setar o usuario que sera utilizado nas outras classes, uma instancia eh criada na propria funcao para que o usuario nao seja alterado aq na classe base.
     static void setUsuarioFinal(Usuario user){
         usuarioFinal = user;
     }

@@ -24,8 +24,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import objetos.Usuario;
@@ -57,7 +55,9 @@ public class TelaPesquisaUsuarioFXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //chama a funcao q configura a tableview
         configurarTableView();
+        //carrega os usuarios ja com a tableview configurada
         carregarUsuariosNaTableView();
     }
 
@@ -65,6 +65,7 @@ public class TelaPesquisaUsuarioFXMLController implements Initializable {
 
     @FXML
     private void clickSair(ActionEvent event) throws IOException {
+        //aponta para a tela de login
         Portfolio.setRoot("telaLoginFXML");
     }
 
@@ -82,23 +83,25 @@ public class TelaPesquisaUsuarioFXMLController implements Initializable {
         tcUsuario.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("email"));
         tcAdmin.setCellValueFactory(new PropertyValueFactory<>("administrador"));
-        
+        //utilizando lambda para criar uma célula personalizada, uma instancia de TableColumn<Usuario, Void>
         tcExcluir.setCellFactory(param -> new TableCell<Usuario, Void>() {
+            //criando o botao excluir para a instancia da célula
             private final Button excluirButton = new Button("Excluir");
 
             {
-                // Adicionar ação para o botão Excluir
+                // Adicionar acao para o botão Excluir, caso seja clicado
                 excluirButton.setOnAction(event -> {
                     Usuario usuario = getTableView().getItems().get(getIndex());
                     excluirUsuario(usuario);
                 });
             }
-
+            //modificando a updateItem para se adequar a nossa tabela
             @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty) {
+            protected void updateItem(Void item, boolean vazio) {
+                //chamando updateItem da super classe para que o comportamento seja padrao, mas q mantenha a verificação abixo
+                super.updateItem(item, vazio);
+                //caso vazio seja true a tabela esta vazia, entao o botao nao é setado, caso nao o botao eh mostrado
+                if (vazio) {
                     setGraphic(null);
                 } else {
                     setGraphic(excluirButton);

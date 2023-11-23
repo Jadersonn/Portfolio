@@ -32,7 +32,13 @@
          </children>
       </AnchorPane>
       <Button layoutX="557.0" layoutY="441.0" mnemonicParsing="false" onAction="#clickVoltar" text="Voltar" />
-      <Text fx:id="nomeCarro" layoutX="26.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nomeCarro" />
-      <Text fx:id="descricao" layoutX="26.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="descricao" />
+      <Text fx:id="nomeCarro" layoutX="26.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nomeCarro">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text fx:id="descricao" layoutX="26.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="descricao">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
    </children>
 </Pane>

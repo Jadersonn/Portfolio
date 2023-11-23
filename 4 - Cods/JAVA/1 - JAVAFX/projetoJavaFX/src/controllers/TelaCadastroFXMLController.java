@@ -75,6 +75,7 @@ public class TelaCadastroFXMLController implements Initializable {
         Usuario usuario = new Usuario();
 
         if (nomeCadastro.getText().isEmpty() || emailCadastro.getText().isEmpty() || confirmeSenhaCadastro.getText().isEmpty() || senhaCadastro.getText().isEmpty()) {
+            //verificando se nao existem campos vazios
             avisoPoupUP("Existem campos não preenchidos.");
             return;
         } else {
@@ -111,13 +112,15 @@ public class TelaCadastroFXMLController implements Initializable {
         alert.showAndWait();
     }
 
+    //verificando a validade do email padrao nome@email.com
     private static boolean emailValido(String email) {
-        // Expressão regular para verificar o formato do e-mail
+        // verificando o formato do e-mail
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-
+        //estamos compilando a expressão em um objeto Pattern qpara corresponder com o formato dado com strings.
         Pattern pattern = Pattern.compile(regex);
+        //fazendo a comparacao e atribuindo a variavel
         Matcher matcher = pattern.matcher(email);
-
+        //retorna um booleano
         return matcher.matches();
     }
 
